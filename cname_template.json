@@ -1,0 +1,17 @@
+{
+  "Changes": [
+    {
+      "Action": "CREATE", 
+      "ResourceRecordSet": {
+        "TTL": 300, 
+        "Type": "CNAME", 
+        "ResourceRecords": [
+          {
+            "Value": "$LB_URL."
+          }
+        ], 
+        "Name": "*.$DOMAIN."
+      }
+    }
+  ]
+}

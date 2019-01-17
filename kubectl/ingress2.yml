@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: main-ingress
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "true"
+    kubernetes.io/tls-acme: "true"
+    certmanager.k8s.io/cluster-issuer: letsencrypt-production
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+  - hosts:
+    - crm.$DOMAIN
+    secretName: crm-cert
+  rules:
+  - host: crm.$DOMAIN
+    http:
+      paths:
+      - backend:
+          serviceName: ui-service
+          servicePort: 80
